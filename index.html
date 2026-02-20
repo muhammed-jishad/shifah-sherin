@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shifah & Sherin | Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Scheherazade+New:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --beige:#f6f1ea;
+  --sand:#efe6da;
+  --clay:#c6a27e;
+  --ivory:#ffffff;
+  --text:#5e534a;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Poppins',sans-serif;
+  background:
+  radial-gradient(circle at 20% 20%, rgba(255,255,255,.5), transparent 40%),
+  radial-gradient(circle at 80% 30%, rgba(198,162,126,.12), transparent 40%),
+  var(--beige);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* Sections */
+section{
+  padding:90px 20px;
+  text-align:center;
+  display:none;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 1.2s ease;
+}
+
+section.active{
+  display:block;
+  opacity:1;
+  transform:translateY(0);
+}
+
+h1,h2{
+  font-family:'Playfair Display',serif;
+}
+
+.arabic{
+  font-family:'Scheherazade New',serif;
+  font-size:30px;
+  line-height:1.8;
+}
+
+/* 3D Envelope */
+#intro{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  background:var(--sand);
+  perspective:1200px;
+}
+
+.envelope{
+  width:320px;
+  height:200px;
+  position:relative;
+  transform-style:preserve-3d;
+}
+
+.envelope-body{
+  width:100%;
+  height:100%;
+  background:var(--ivory);
+  border-radius:6px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  position:absolute;
+}
+
+.flap{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:var(--ivory);
+  clip-path:polygon(0 0, 100% 0, 50% 60%);
+  transform-origin:top;
+  transition:transform 1.6s cubic-bezier(.77,0,.18,1);
+}
+
+.wax{
+  position:absolute;
+  width:65px;
+  height:65px;
+  background:radial-gradient(circle at 30% 30%, #d6b08c, var(--clay));
+  border-radius:50%;
+  top:75px;
+  left:128px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-family:'Playfair Display';
+  font-weight:600;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
+
+.envelope.open .flap{
+  transform:rotateX(-160deg);
+}
+
+/* Buttons */
+button{
+  background:var(--clay);
+  color:white;
+  border:none;
+  padding:14px 32px;
+  margin-top:30px;
+  border-radius:40px;
+  cursor:pointer;
+  transition:.4s;
+  font-size:16px;
+}
+
+button:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* Countdown */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+
+.count-box{
+  background:rgba(255,255,255,.6);
+  backdrop-filter:blur(6px);
+  padding:25px;
+  border-radius:16px;
+  min-width:100px;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+/* Inputs */
+input,textarea{
+  width:100%;
+  max-width:350px;
+  padding:10px;
+  margin:10px auto;
+  border-radius:8px;
+  border:1px solid #ddd;
+  display:block;
+}
+
+canvas{
+  border:1px solid #ddd;
+  border-radius:12px;
+  margin-top:20px;
+  width:100%;
+  max-width:350px;
+  height:160px;
+}
+
+iframe{
+  width:100%;
+  max-width:700px;
+  height:350px;
+  border:none;
+  border-radius:14px;
+  margin-top:30px;
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .arabic{font-size:22px}
+  .envelope{width:260px;height:160px}
+  .wax{left:95px;top:55px}
+}
+</style>
+</head>
+<body>
+
+<!-- Music -->
+<iframe id="musicPlayer" style="display:none" allow="autoplay"></iframe>
+
+<!-- Intro -->
+<div id="intro">
+  <div class="envelope" id="envelope">
+    <div class="envelope-body"></div>
+    <div class="flap"></div>
+    <div class="wax">S&S</div>
+  </div>
+  <!-- <button onclick="openInvitation()">Open Invitation</button> -->
+</div>
+
+<!-- Invitation -->
+<section id="invitation">
+  <div class="arabic">
+    بسم الله الرحمن الرحيم <br>
+    بارك الله لكم وبارك عليكم وجمع بينكم في خير
+  </div>
+  <p style="margin-top:25px;font-style:italic">
+    “We invite you to witness the day our dream comes true.”
+  </p>
+  <h1 style="margin-top:20px;">Shifah & Sherin</h1>
+  <p style="margin-top:20px;">
+    8 January 2026<br>
+    6:00 PM<br>
+    Luxmore
+  </p>
+</section>
+
+<!-- Countdown -->
+<section id="countdownSection">
+  <h2>Counting down to our special day</h2>
+  <div class="countdown">
+    <div class="count-box"><div id="days"></div>days</div>
+    <div class="count-box"><div id="hours"></div>Hours</div>
+    <div class="count-box"><div id="minutes"></div>Minutes</div>
+    <div class="count-box"><div id="seconds"></div>Seconds</div>
+  </div>
+  <button onclick="addToCalendar()">Add to Calendar</button>
+</section>
+
+<!-- Venue -->
+<section id="venue">
+  <h2>Venue</h2>
+  <p>Republican Guards Club</p>
+  <iframe src="https://maps.google.com/maps?q=Republican%20Guards%20Club&t=&z=15&ie=UTF8&iwloc=&output=embed"></iframe>
+  <br>
+  <a href="https://maps.app.goo.gl/XwiNGsFHXWZQ3LC17" target="_blank">
+    <button>Open in Google Maps</button>
+  </a>
+</section>
+
+<!-- Messages -->
+<!-- <section id="messages">
+  <h2>Share your wishes with us</h2>
+  <input type="text" placeholder="Your Name">
+  <textarea rows="4" placeholder="Your Message"></textarea>
+  <canvas id="signaturePad"></canvas>
+  <button>Send</button>
+</section> -->
+
+<script>
+  function openInvitation() {
+  document.getElementById("envelope").classList.add("open");
+}
+
+document.querySelector(".envelope").addEventListener("click", openInvitation);
+function openInvitation(){
+  const env=document.getElementById("envelope");
+  env.classList.add("open");
+
+  setTimeout(()=>{
+    document.getElementById("intro").style.display="none";
+    document.querySelectorAll("section").forEach(s=>s.classList.add("active"));
+
+    // YouTube autoplay at 0:55
+    const iframe=document.getElementById("musicPlayer");
+    iframe.src="https://www.youtube.com/embed/GDCU2BUoeqU?start=55&autoplay=1&playsinline=1&rel=0";
+  },1600);
+}
+
+/* Countdown */
+const wedding=new Date("March 29, 2026 10:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const diff=wedding-now;
+  document.getElementById("days").innerText=Math.floor(diff/(1000*60*60*24));
+  document.getElementById("hours").innerText=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  document.getElementById("minutes").innerText=Math.floor((diff%(1000*60*60))/(1000*60));
+  document.getElementById("seconds").innerText=Math.floor((diff%(1000*60))/1000);
+},1000);
+
+/* Calendar */
+function addToCalendar(){
+  const ics=`BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:20260108T180000
+DTEND:20260108T220000
+SUMMARY:Shifah and Sherin Wedding
+LOCATION:Republican Guards Club
+END:VEVENT
+END:VCALENDAR`;
+  const blob=new Blob([ics],{type:'text/calendar'});
+  const link=document.createElement('a');
+  link.href=URL.createObjectURL(blob);
+  link.download="wedding.ics";
+  link.click();
+}
+
+/* Signature */
+const sign=document.getElementById("signaturePad");
+const ctx=sign.getContext("2d");
+let draw=false;
+
+function getPos(e){
+  const rect=sign.getBoundingClientRect();
+  return{
+    x:(e.touches?e.touches[0].clientX:e.clientX)-rect.left,
+    y:(e.touches?e.touches[0].clientY:e.clientY)-rect.top
+  }
+}
+
+sign.addEventListener("mousedown",()=>draw=true);
+sign.addEventListener("mouseup",()=>draw=false);
+sign.addEventListener("mousemove",e=>{
+  if(!draw)return;
+  const pos=getPos(e);
+  ctx.lineWidth=2;
+  ctx.lineCap="round";
+  ctx.strokeStyle="#5e534a";
+  ctx.lineTo(pos.x,pos.y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(pos.x,pos.y);
+});
+sign.addEventListener("touchstart",()=>draw=true);
+sign.addEventListener("touchend",()=>draw=false);
+sign.addEventListener("touchmove",e=>{
+  if(!draw)return;
+  const pos=getPos(e);
+  ctx.lineWidth=2;
+  ctx.lineCap="round";
+  ctx.strokeStyle="#5e534a";
+  ctx.lineTo(pos.x,pos.y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(pos.x,pos.y);
+});
+</script>
+
+</body>
+</html>
