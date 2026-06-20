@@ -329,8 +329,8 @@
 
 .os-medallion {
     position: relative;
-    width: 240px;
-    height: 240px;
+    width: 280px;
+    height: 280px;
 
     border-radius: 50%;
     overflow: hidden;
@@ -370,23 +370,24 @@
 
 .seal-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #b08a2c;
     letter-spacing: 1px;
 }
 
 .seal-amp {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     color: #b08a2c;
     margin: 3px 0;
 }
 
 .seal-open {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     letter-spacing: 3px;
     color: #b08a2c;
+    padding-top: 3px;
 }
 
 /* Inner ring line */
@@ -459,7 +460,7 @@
   .scene-frame  { inset: 12px; }
   .scene-inner  { padding: 55px 22px 75px; }
   .os-name      { font-size: clamp(4rem, 20vw, 6.5rem); }
-  .os-medallion { width: 96px; height: 96px; }
+  .os-medallion { width: 140px; height: 140px; }
   .os-geo       { display: none; }
 }
 
@@ -1699,6 +1700,7 @@ function openEnvelope() {
       document.getElementById('envelope-scene').classList.add('hidden');
       document.getElementById('invitation').classList.add('revealed');
       document.body.style.overflow = 'auto';
+       window.scrollTo({ top: 0, behavior: 'instant' }); // 
       initScrollReveal();
       initHeroAnimations();
     }
@@ -1773,7 +1775,7 @@ function initScrollReveal() {
   });
 
   // Nav dots update
-  const sections = ['hero','story','events','countdown-section','timeline','venue','gallery','rsvp'];
+  const sections = ['hero','story','events','countdown-section','venue','gallery'];
   sections.forEach((id, i) => {
     ScrollTrigger.create({
       trigger: `#${id}`,
