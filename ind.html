@@ -681,7 +681,7 @@
   .section-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 6rem 1.5rem;
+    padding: 1rem 1.5rem;
   }
   .section-eyebrow {
     font-size: 0.7rem;
@@ -831,7 +831,6 @@
   .countdown-grid {
     display: flex;
     justify-content: center;
-    gap: clamp(1rem, 4vw, 3rem);
     margin-top: 3rem;
     flex-wrap: wrap;
   }
@@ -1483,11 +1482,7 @@ REC, Malayamma Rd, Ambalakkandi, Omassery, Puthur, Kerala
           <div class="countdown-num" id="cd-mins">--</div>
           <div class="countdown-label">Minutes</div>
         </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-item">
-          <div class="countdown-num" id="cd-secs">--</div>
-          <div class="countdown-label">Seconds</div>
-        </div>
+      
       </div>
     </div>
   </section>
@@ -1599,7 +1594,6 @@ function updateCountdown() {
     document.getElementById('cd-days').textContent = '0';
     document.getElementById('cd-hours').textContent = '00';
     document.getElementById('cd-mins').textContent = '00';
-    document.getElementById('cd-secs').textContent = '00';
     return;
   }
   const d = Math.floor(diff / 86400000);
@@ -1609,7 +1603,6 @@ function updateCountdown() {
   document.getElementById('cd-days').textContent = d;
   document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
   document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
 }
 setInterval(updateCountdown, 1000);
 updateCountdown();
