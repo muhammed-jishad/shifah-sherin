@@ -1298,7 +1298,6 @@
   <div class="nav-dot" onclick="scrollToSection('story')" title="Story"></div>
   <div class="nav-dot" onclick="scrollToSection('events')" title="Events"></div>
   <div class="nav-dot" onclick="scrollToSection('countdown-section')" title="Countdown"></div>
-  <div class="nav-dot" onclick="scrollToSection('venue')" title="Venue"></div>
   <div class="nav-dot" onclick="scrollToSection('gallery')" title="Gallery"></div>
 </div>
 
@@ -1441,25 +1440,25 @@
       </p>
 
       <div class="events-grid">
-        <div class="event-card reveal glass-card-dark">
+        <div class="event-card reveal glass-card-dark" style="transition-delay:0.1s;margin-top:15px">
           <div class="event-name">Nikah Ceremony</div>
           <div class="event-detail">
             <strong>Wednesday, 5th August 2026</strong>
             11:00 AM<br><br>
             <strong>Snehatheeram Convention Centre</strong>
-REC, Malayamma Rd, Ambalakkandi, Omassery, Puthur, Kerala
+          Omassery, Puthur, Kerala
           </div>
            <a class="gold-btn reveal" href="https://www.google.com/maps?cid=17993365984890179647&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en&gl=IN&source=embed" target="_blank" rel="noopener">
             Get Directions
           </a>
         </div>
-        <div class="event-card reveal glass-card-dark" style="transition-delay:0.1s;">
+        <div class="event-card reveal glass-card-dark" style="transition-delay:0.1s;margin-top:15px">
           <div class="event-name">Walima Reception</div>
           <div class="event-detail">
             <strong>Thursday, 6th August 2026</strong>
             12:30 PM - 3:00 PM <br><br>
             <strong>Luxmore Convention Centre</strong>
-            Kodakallu Bus stop, Atholi, Kozhikode, Kerala
+            Atholi, Kozhikode, Kerala
           </div>
            <a class="gold-btn reveal" href="https://www.google.com/maps?cid=5416088737566547029&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en-US&source=embed" target="_blank" rel="noopener">
             Get Directions
@@ -1471,7 +1470,7 @@ REC, Malayamma Rd, Ambalakkandi, Omassery, Puthur, Kerala
 
   <!-- ── COUNTDOWN ── -->
   <section id="countdown-section">
-    <div class="section-container" style="text-align:center;">
+    <div class="section-container" style="text-align:center;padding:4.0rem 2.0rem !important;">
       <div class="section-eyebrow reveal">Counting Down</div>
       <h2 class="section-title reveal">The Day Approaches</h2>
       <div class="countdown-grid reveal">
@@ -1497,48 +1496,6 @@ REC, Malayamma Rd, Ambalakkandi, Omassery, Puthur, Kerala
   <!-- ── TIMELINE ── -->
 
   <!-- ── VENUE ── -->
-  <section id="venue">
-    <div class="section-container">
-      <div class="venue-grid">
-        <div>
-          <div class="section-eyebrow reveal">Location</div>
-          <h2 class="venue-name reveal">Luxmore Convention Centre</h2>
-          <div class="ornament-divider reveal" style="color:var(--emerald);">
-            <div class="line"></div>
-            <div class="diamond"></div>
-            <div class="line right"></div>
-          </div>
-          <p class="venue-address reveal">
-            Kodakallu Bus stop, Atholi<br>
-            Kozhikode, Kerala
-          </p>
-          <a class="gold-btn reveal" href="https://www.google.com/maps?cid=5416088737566547029&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en-US&source=embed" target="_blank" rel="noopener">
-            Get Directions
-          </a>
-        </div>
-        <a class="map-placeholder reveal" href="https://www.google.com/maps?cid=5416088737566547029&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAMYASAF&hl=en-US&source=embed">
-          <div style="position:relative;">
-            <div class="map-pin"></div>
-          </div>
-          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.08;" viewBox="0 0 200 200">
-            <defs>
-              <pattern id="geo" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <polygon points="20,2 38,10 38,30 20,38 2,30 2,10" fill="none" stroke="#D4AF37" stroke-width="0.5"/>
-                <line x1="20" y1="2" x2="20" y2="38" stroke="#D4AF37" stroke-width="0.3"/>
-                <line x1="2" y1="20" x2="38" y2="20" stroke="#D4AF37" stroke-width="0.3"/>
-              </pattern>
-            </defs>
-            <rect width="200" height="200" fill="url(#geo)"/>
-          </svg>
-          <div style="position:absolute;bottom:1rem;left:0;right:0;text-align:center;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(212,175,55,0.5);font-family:'Inter',sans-serif;">
-           Luxmore Convention Centre
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  
 
   <!-- ── RSVP ── -->
 
@@ -1760,7 +1717,7 @@ function initScrollReveal() {
   });
 
   // Nav dots update
-  const sections = ['hero','story','events','countdown-section','venue'];
+  const sections = ['hero','story','events','countdown-section'];
   sections.forEach((id, i) => {
     ScrollTrigger.create({
       trigger: `#${id}`,
